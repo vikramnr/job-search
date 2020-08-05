@@ -11,16 +11,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "axios": "^0.19.2",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.1.0",
-    "install": "^0.13.0",
-    "nodemon": "^2.0.4",
-    "npm": "^6.14.7"
+    "nodemon": "^2.0.4"
   },
   "dependencies": {
     "express-ip": "^1.0.4",
     "sanitize-html": "^1.27.2",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "install": "^0.13.0",
+    "npm": "^6.14.7"
   }
 }
