@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Jobs</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <style>   
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base search">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+            <div class="mdl-layout__header-row portfolio-logo-row">
+                <span class="mdl-layout__title">
+                    <div class="portfolio-logo"></div>
+                    <span class="mdl-layout__title">{{ title }} ({{ countryCode }})</span>
+                </span>
+            </div>
+        </header>
+        <div class="search-ribbon">
+                <form method="GET">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input query-input" type="text" id="query" name="q">
+                        <label class="mdl-textfield__label" for="query">What</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input query-input" type="text" id="query" name="l">
+                        <label class="mdl-textfield__label" for="query">Where</label>
+                    </div>
+                    <button type="submit" class="mdl-button query-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Find Jobs
+                    </button>
+                </form>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="mdl-grid portfolio-max-width query-body">
+                 {{# each jobs }}
+                <div class="mdl-cell mdl-card mdl-cell mdl-shadow--4dp portfolio-card">
+                    <div class="mdl-card__media"></div>
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">{{ this.title }}</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        {{ this.summary }}
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="{{ this.url }}">Read more</a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            
+            
+            <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Job Search Made easy with <i class="material-icons">favorite</i>  
+                by API</div>
+            </div>
+             
+                <div class="mdl-mini-footer__right-section">
+                    <ul class="mdl-mini-footer__link-list">
+                        <li>
+                            <a href="#">Help?</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy & Terms</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>

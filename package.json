@@ -1,0 +1,24 @@
+{
+  "name": "job-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "install": "^0.13.0",
+    "nodemon": "^2.0.4",
+    "npm": "^6.14.7"
+  },
+  "dependencies": {
+    "express-ip": "^1.0.4"
+  }
+}
