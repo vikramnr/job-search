@@ -64,13 +64,11 @@ app.get('/search', async (req, res) => {
     try {
       let response = await axios.get(url, { params: query })
       let jobs = response.data
-      console.log(query)
-      console.log(jobs)
       res.render('search', {
         layout: false,
         jobs: jobs,
         title: 'Search Jobs',
-        countryCode: ipInfo.countryCode,
+        countryCode: ipInfo.country,
       })
     } catch (e) {
       console.log(e, 'an error occured')
