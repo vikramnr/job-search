@@ -22,12 +22,12 @@ app.set('view engine', '.hbs')
 app.get('/so', async (req, res) => {
   if (soJobs.length <= 0) {
     let response = await axios.get(`https://stackoverflow.com/jobs/feed`)
-    var jsonC = convert.xml2js(response.data, { compact: true, spaces: 4 })
-    soJobs.push(...jsonC.rss.channel.item)
+    let jsonC = convert.xml2js(response.data, { compact: true, spaces: 4 })
+    let jobs = sanitizeJobs(jsonC.rss.channel.item)
+    soJobs.push(...jobs)
   }
 
-  let jobs = soJobs.slice(0, 9)
-  jobs = sanitizeJobs(jobs)
+  let jobs = soJobs.slice(0, 6)
   res.render('sosearch', {
     title: 'Search Jobs',
     current:0,
@@ -37,10 +37,9 @@ app.get('/so', async (req, res) => {
 })
 
 app.get('/so/next/:id',(req,res) => {
-  let currentPage = parseInt(req.params.id+1)*9
+  let currentPage = parseInt(req.params.id+1)*6
   current = parseInt(req.params.id)+1
-  let jobs = soJobs.slice(currentPage,currentPage+9)
-  jobs = sanitizeJobs(jobs)
+  let jobs = soJobs.slice(currentPage,currentPage+6)
   res.render('sosearch', {
     title: 'search Jobs',
     jobs: jobs,

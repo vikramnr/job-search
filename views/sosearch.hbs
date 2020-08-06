@@ -21,32 +21,25 @@
             <div class="container">
                 <div class="row">
                     {{# each jobs }}
-                    <div class="col-sm">
-                        <div class="card" style="width: 18rem">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        {{ this.title }}</h5>
-                    <p class="card-text">
-                        {{&this.description}}
-                    </p>
-                    <a class="card-link" href="{{ this.link }}">Read more</a>
+                    <div class="col-lg d-flex align-items-stretch">
+                        <div class="card h-100" style="width: 18rem">
+                        <div class="card-body flex-fill">
+                          <h5 class="card-title">{{ this.title }}</h5>
+                          <p class="card-text">{{&this.description}}</p>
+                          <a class="card-link" href="{{ this.link }}">Read more</a>
+                        </div>
+                        </div>
                     </div>
+                    {{/each}}
                 </div>
-                    </div>
-                {{/each}}
-                </div>
-                <form action="/so/next/{{current}}" method="get">
-                    <button type="submit" class="btn btn-secondary">Load More</button>
-                </form>
-                
-                </div>
-            
-            <footer class="fixed-bottom">
-                <div class="p-1 bg-dark text-center text-white">Job Search Made easy with <i class="material-icons">favorite</i>by Indreed API
+            <form class="pull-right" action="/so/next/{{current}}" method="get">
+                    <button type="submit" style="" class="btn btn-dark">Load Next..</button>
+            </form>
+            <footer class="">
+                <div class="mt-2 bg-dark text-center text-white">Job Search Made easy with <i class="material-icons">favorite</i>by Indreed API
                 <a class="nav-link text-white" href="/">Go to Indreed Feed</a>
             </div>
             </footer>
         </main>
-        
 </body>
 </html>
