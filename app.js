@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 5000
 const path = require('path')
 var convert = require('xml-js')
 let soJobs = []
+let current = 0
 
 app.engine('.hbs', handlebars({ extname: '.hbs' }))
 app.set('PORT', PORT)
@@ -29,8 +30,22 @@ app.get('/so', async (req, res) => {
   jobs = sanitizeJobs(jobs)
   res.render('sosearch', {
     title: 'Search Jobs',
+    current:0,
     jobs: jobs,
     layout: false,
+  })
+})
+
+app.get('/so/next/:id',(req,res) => {
+  let currentPage = parseInt(req.params.id+1)*9
+  current = parseInt(req.params.id)+1
+  let jobs = soJobs.slice(currentPage,currentPage+9)
+  jobs = sanitizeJobs(jobs)
+  res.render('sosearch', {
+    title: 'search Jobs',
+    jobs: jobs,
+    current: current,
+    layout: false
   })
 })
 
@@ -50,6 +65,8 @@ app.get('/search', async (req, res) => {
     try {
       let response = await axios.get(url, { params: query })
       let jobs = response.data
+      console.log(query)
+      console.log(jobs)
       res.render('search', {
         layout: false,
         jobs: jobs,

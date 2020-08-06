@@ -13,8 +13,8 @@
 
 <body>
         <header>
-            <nav class="nav">
-                <a class="nav-link active">StackOverFlow {{ title }}</a>
+            <nav class="nav p-1 mb-3 bg-dark text-white">
+                <a class="nav-link text-white active">StackOverFlow Feed</a>
             </nav>
         </header>
         <main>
@@ -35,14 +35,18 @@
                     </div>
                 {{/each}}
                 </div>
-            </div>            
-            <footer>
-                <div class="container">
-               <div class="text-center">Job Search Made easy with <i class="material-icons">favorite</i>by API
-               </div>
+                <form action="/so/next/{{current}}" method="get">
+                    <button type="submit" class="btn btn-secondary">Load More</button>
+                </form>
+                
+                </div>
+            
+            <footer class="fixed-bottom">
+                <div class="p-1 bg-dark text-center text-white">Job Search Made easy with <i class="material-icons">favorite</i>by Indreed API
+                <a class="nav-link text-white" href="/">Go to Indreed Feed</a>
             </div>
             </footer>
         </main>
-    
+        
 </body>
 </html>
